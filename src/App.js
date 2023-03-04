@@ -26,7 +26,7 @@ function App() {
     const getToDoData = {
       userId: userId,
     };
-    const response = await fetch("/todo/getToDo", {
+    const response = await fetch("https://todoapp-miks.herokuapp.com/todo/getToDo", {
       method: "POST",
       headers: {
         "content-type": "application/json",

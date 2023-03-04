@@ -23,7 +23,7 @@ export default function CreateUserModal(props) {
       password: newPassword.current?.value,
     };
     if(username.includes("@gmail.com")){try {
-      fetch("/todo/register", {
+      fetch("https://todoapp-miks.herokuapp.com/todo/register", {
         method: "POST",
         headers: {
           "content-type": "application/json",

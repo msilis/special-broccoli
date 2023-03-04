@@ -24,7 +24,7 @@ export default function ToDoContainer({
   function handleToDoDelete(event) {
     const itemToDelete = event.target.parentNode.parentNode.parentNode.id;
     try {
-      fetch(`/todo/${itemToDelete}`, {
+      fetch(`https://todoapp-miks.herokuapp.com/todo/${itemToDelete}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",

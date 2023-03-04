@@ -25,7 +25,7 @@ export default function AddToDo({
       toDoText: toDoInput.current?.value,
     };
     try {
-      fetch("/todo/add", {
+      fetch("https://todoapp-miks.herokuapp.com/todo/add", {
         method: "POST",
         headers: {
           "content-type": "application/json",

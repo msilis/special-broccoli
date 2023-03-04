@@ -32,7 +32,7 @@ export default function LoginModal({
       password: password.current?.value,
     };
     try {
-      fetch("/todo/login", {
+      fetch("https://todoapp-miks.herokuapp.com/todo/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
