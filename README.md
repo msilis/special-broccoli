@@ -1,3 +1,4 @@
 # ToDo App
 
-Created with React. Uses Express and MongoDB with JWT authentication.
+React frontend for to-do app. Needs `https://github.com/msilis/literate-meme.git` for the backend to run.
+
