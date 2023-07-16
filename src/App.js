@@ -26,14 +26,17 @@ function App() {
     const getToDoData = {
       userId: userId,
     };
-    const response = await fetch("https://todoapp-miks.herokuapp.com/todo/getToDo", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        /* "authorization": `Bearer ${userToken}` */
-      },
-      body: JSON.stringify(getToDoData),
-    });
+    const response = await fetch(
+      "https://todo-backend-y1e3.onrender.com/getToDo",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          /* "authorization": `Bearer ${userToken}` */
+        },
+        body: JSON.stringify(getToDoData),
+      }
+    );
     const result = await response.json();
 
     setUserToDo(result);

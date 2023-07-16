@@ -8,28 +8,28 @@ export default function AddToDo({
   editId,
   editText,
   toDoInput,
-  userToken
+  userToken,
 }) {
   //Get user input
 
   function handleAddToDo() {
     //check for empty input
-    if(toDoInput.current?.value.length === 0){
-        alert(`You can't add an empty item!.`)
-        return
+    if (toDoInput.current?.value.length === 0) {
+      alert(`You can't add an empty item!.`);
+      return;
     }
-  
+
     //Organise data to send to database
     const toDoData = {
       userId: userId,
       toDoText: toDoInput.current?.value,
     };
     try {
-      fetch("https://todoapp-miks.herokuapp.com/todo/add", {
+      fetch("https://todo-backend-y1e3.onrender.com/add", {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          "authorization": `Bearer ${userToken}`
+          authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(toDoData),
       }).then(() => {
@@ -43,7 +43,7 @@ export default function AddToDo({
   //Edit todo functionality
 
   function handleEdit() {
-   //Data to send to database
+    //Data to send to database
     const editData = {
       id: editId,
       toDoBody: toDoInput.current?.value,
@@ -54,7 +54,7 @@ export default function AddToDo({
         method: "PATCH",
         headers: {
           "content-type": "application/json",
-          "authorization": `Bearer ${userToken}`
+          authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(editData),
       }).then(() => {
@@ -74,9 +74,9 @@ export default function AddToDo({
   }
 
   //Enter key
-  function handleEnterKey(event){
-    if(event.key === "Enter"){
-      handleAddToDo()
+  function handleEnterKey(event) {
+    if (event.key === "Enter") {
+      handleAddToDo();
     }
   }
   //conditionally render button text and set onClick function

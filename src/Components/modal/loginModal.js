@@ -32,7 +32,7 @@ export default function LoginModal({
       password: password.current?.value,
     };
     try {
-      fetch("https://todoapp-miks.herokuapp.com/todo/login", {
+      fetch("https://todo-backend-y1e3.onrender.com/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -68,9 +68,12 @@ export default function LoginModal({
         })
         .then(() => {
           getToDo();
-        }).catch(()=>{console.log("There was an invalid username or password")});
+        })
+        .catch(() => {
+          console.log("There was an invalid username or password");
+        });
     } catch (err) {
-      console.log('error from line 73')
+      console.log("error from line 73");
       console.log(err);
     }
     setUserLoggedIn(true);
@@ -84,9 +87,9 @@ export default function LoginModal({
   }
 
   //Enter key functionality
-  function handleEnterKey(event){
-    if(event.key === "Enter"){
-      handleLoginUser()
+  function handleEnterKey(event) {
+    if (event.key === "Enter") {
+      handleLoginUser();
     }
   }
 
@@ -102,7 +105,7 @@ export default function LoginModal({
           type="password"
           onKeyDown={handleEnterKey}
         />
-        <button onClick={handleLoginUser} className="loginButton" >
+        <button onClick={handleLoginUser} className="loginButton">
           Login
         </button>
         <button onClick={handleLoginCancel} className="cancelButton">

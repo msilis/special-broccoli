@@ -17,18 +17,18 @@ export default function ToDoContainer({
   editText,
   setEditText,
   toDoInput,
-  userToken
+  userToken,
 }) {
   /* const checkValue = userToDo.completed ? checkBlack : checkGray; */
   //Delete an item
   function handleToDoDelete(event) {
     const itemToDelete = event.target.parentNode.parentNode.parentNode.id;
     try {
-      fetch(`https://todoapp-miks.herokuapp.com/todo/${itemToDelete}`, {
+      fetch(`https://todo-backend-y1e3.onrender.com/${itemToDelete}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
-          "authorization": `Bearer ${userToken}`
+          authorization: `Bearer ${userToken}`,
         },
       })
         .then((response) => console.log(response))
@@ -65,13 +65,12 @@ export default function ToDoContainer({
   function handleEditClick(event) {
     setEdit(true);
     const itemId = event.target.parentNode.parentNode.parentNode.id;
-    const editText = event.target.parentNode.parentNode.innerText
+    const editText = event.target.parentNode.parentNode.innerText;
     setEditId(itemId);
-    setEditText(editText)
+    setEditText(editText);
     console.log(itemId);
-    console.log(editText)
-    toDoInput.current.value = editText
-
+    console.log(editText);
+    toDoInput.current.value = editText;
   }
 
   const toDoDisplay = Object.values(userToDo).map((todo, index) => {
@@ -98,7 +97,9 @@ export default function ToDoContainer({
               onClick={handleToDoDelete}
             />
           </div>
-          <h4 className={todo.completed ? style.completedItem : null}>{todo.toDoBody}</h4>
+          <h4 className={todo.completed ? style.completedItem : null}>
+            {todo.toDoBody}
+          </h4>
         </div>
       </div>
     );

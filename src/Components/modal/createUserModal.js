@@ -17,28 +17,31 @@ export default function CreateUserModal(props) {
   //function to create user and send info to database
 
   function handleCreateUser() {
-    const username = newUsername.current?.value
+    const username = newUsername.current?.value;
     const createUserData = {
       username: username,
       password: newPassword.current?.value,
     };
-    if(username.includes("@gmail.com")){try {
-      fetch("https://todoapp-miks.herokuapp.com/todo/register", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(createUserData),
-      })
-        .then((result) => result.json)
-        .then((info) => console.log(info));
-      newUsername.current.value = "";
-      newPassword.current.value = "";
-      setShowCreateModal(false);
-    } catch (err) {
-      console.log(err);
-    }}
-    else{alert("You username needs to include '@gmail.com'")}
+    if (username.includes("@gmail.com")) {
+      try {
+        fetch("https://todo-backend-y1e3.onrender.com/register", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(createUserData),
+        })
+          .then((result) => result.json)
+          .then((info) => console.log(info));
+        newUsername.current.value = "";
+        newPassword.current.value = "";
+        setShowCreateModal(false);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("You username needs to include '@gmail.com'");
+    }
   }
 
   //function to cancel creation of user
